@@ -1,0 +1,86 @@
+[gd_scene load_steps=10 format=3 uid="uid://dmyevph6w6ly4"]
+
+[ext_resource type="Texture2D" uid="uid://dfiayln41xtmc" path="res://mystic_woods_free_2.2/sprites/characters/slime.png" id="1_02a3p"]
+[ext_resource type="Script" uid="uid://q71qrhsfaxxe" path="res://apollo.gd" id="1_gw16q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gw16q"]
+radius = 5.0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gw16q"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m83pb"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_m83pb"]
+states/idle/node = SubResource("AnimationNodeAnimation_gw16q")
+states/idle/position = Vector2(403.62003, 91.8625)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_m83pb")]
+graph_offset = Vector2(45.120026, 3.8625)
+
+[sub_resource type="Animation" id="Animation_m83pb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_gw16q"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q05oq"]
+_data = {
+&"RESET": SubResource("Animation_m83pb"),
+&"idle": SubResource("Animation_gw16q")
+}
+
+[node name="Apollo" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_gw16q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gw16q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 2)
+scale = Vector2(0.9054054, 1)
+texture = ExtResource("1_02a3p")
+hframes = 7
+vframes = 10
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../Sprite2D")
+tree_root = SubResource("AnimationNodeStateMachine_m83pb")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+&"": SubResource("AnimationLibrary_q05oq")
+}

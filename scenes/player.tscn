@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c5x8qy01dhwik" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://bvcqoprrnwk6l" path="res://mystic_woods_free_2.2/sprites/characters/player.png" id="2_qhqgy"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0e48y"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2els"]
 radius = 4.0
 height = 10.0
 
@@ -157,26 +157,26 @@ _data = {
 &"running_up": SubResource("Animation_dqkch")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y4r1p"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qhqgy"]
 animation = &"attacking_side"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d2wvv"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dqkch"]
 animation = &"attacking_side"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3v2ag"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qlg0r"]
 animation = &"attack_up"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jej6c"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tuyoq"]
 animation = &"attack"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_f1ej7"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_y4r1p")
+blend_point_0/node = SubResource("AnimationNodeAnimation_qhqgy")
 blend_point_0/pos = Vector2(1, 0)
-blend_point_1/node = SubResource("AnimationNodeAnimation_d2wvv")
+blend_point_1/node = SubResource("AnimationNodeAnimation_dqkch")
 blend_point_1/pos = Vector2(-1, 0)
-blend_point_2/node = SubResource("AnimationNodeAnimation_3v2ag")
+blend_point_2/node = SubResource("AnimationNodeAnimation_qlg0r")
 blend_point_2/pos = Vector2(0, -1)
-blend_point_3/node = SubResource("AnimationNodeAnimation_jej6c")
+blend_point_3/node = SubResource("AnimationNodeAnimation_tuyoq")
 blend_point_3/pos = Vector2(0, 1)
 blend_mode = 1
 
@@ -194,26 +194,26 @@ node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"BlendSpace2D"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fjrip"]
 animation = &"idle"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qhqgy"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_smehm"]
 animation = &"running_side"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g2els"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ur7pv"]
 animation = &"running_down"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dqkch"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y4r1p"]
 animation = &"running_up"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qlg0r"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d2wvv"]
 animation = &"running_side"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_fjrip"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_qhqgy")
+blend_point_0/node = SubResource("AnimationNodeAnimation_smehm")
 blend_point_0/pos = Vector2(1, 0)
-blend_point_1/node = SubResource("AnimationNodeAnimation_g2els")
+blend_point_1/node = SubResource("AnimationNodeAnimation_ur7pv")
 blend_point_1/pos = Vector2(0, 1)
-blend_point_2/node = SubResource("AnimationNodeAnimation_dqkch")
+blend_point_2/node = SubResource("AnimationNodeAnimation_y4r1p")
 blend_point_2/pos = Vector2(0, -1)
-blend_point_3/node = SubResource("AnimationNodeAnimation_qlg0r")
+blend_point_3/node = SubResource("AnimationNodeAnimation_d2wvv")
 blend_point_3/pos = Vector2(-1, 0)
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_smehm"]
@@ -252,30 +252,29 @@ states/running/position = Vector2(485.20007, 1.4626427)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_ur7pv"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_g2els"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_qhqgy"), "idle", "running", SubResource("AnimationNodeStateMachineTransition_y4r1p"), "running", "idle", SubResource("AnimationNodeStateMachineTransition_d2wvv"), "running", "attack", SubResource("AnimationNodeStateMachineTransition_3v2ag")]
 graph_offset = Vector2(75.200554, -103.682556)
 
-[node name="Main" type="Node2D"]
-
-[node name="Player" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D"]
+slide_on_ceiling = false
 script = ExtResource("1_g2els")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1, -18)
 texture = ExtResource("2_qhqgy")
 hframes = 6
 vframes = 10
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -9)
-shape = SubResource("CapsuleShape2D_0e48y")
+shape = SubResource("CapsuleShape2D_g2els")
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.5, 2.5)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_dqkch")
 }
 
-[node name="AnimationTree" type="AnimationTree" parent="Player"]
+[node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_3v2ag")
 anim_player = NodePath("../AnimationPlayer")
 parameters/attack/BlendSpace2D/blend_position = Vector2(0, 0)
