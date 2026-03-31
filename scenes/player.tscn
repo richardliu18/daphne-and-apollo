@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bvcqoprrnwk6l" path="res://mystic_woods_free_2.2/sprites/characters/player.png" id="2_qhqgy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2els"]
-radius = 4.0
-height = 10.0
+radius = 9.0
+height = 24.0
 
 [sub_resource type="Animation" id="Animation_qhqgy"]
 length = 0.001

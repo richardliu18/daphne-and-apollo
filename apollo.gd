@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed: float = 148
+@export var speed: float = 155
 
 @onready var player = get_node("../Player")
 
@@ -9,7 +9,8 @@ extends CharacterBody2D
 @onready var apollo: NavigationAgent2D = $NavigationAgent2D
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var anim_state: AnimationNodeStateMachinePlayback = animation_tree["parameters/playback"]
- 
+@onready var main = get_node("/root/Main")
+
 func _ready():
 	if player == null:
 		player = $"../Player"
@@ -27,12 +28,20 @@ func wait_for_physics():
 	
 func _physics_process(delta: float) -> void:
 	
-	if apollo.is_navigation_finished() and target_to_chase.global_position == apollo.target_position:
-		endGame()
-			
-	apollo.target_position = target_to_chase.global_position
+	apollo.target_position = player.global_position
 	velocity = global_position.direction_to(apollo.get_next_path_position()) * speed
 	move_and_slide()
+
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var body = collision.get_collider()
+		print("Hit:", body.name)
+		if body == player:
+			print("end game")
+			main.set_state(main.GameState.APOLLO_END)
 	
-func endGame():
-	return
+	
+
+func _on_body_entered(body):
+	if body.name == "Player":
+		main.set_state(main.GameState.APOLLO_END)

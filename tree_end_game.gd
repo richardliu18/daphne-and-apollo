@@ -10,10 +10,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 	
-	
-func _on_restart_button_pressed():
-	# Reload the current scene
-	get_tree().reload_current_scene()
 
 func _on_quit_button_pressed():
 	# Quit the game
@@ -23,3 +19,7 @@ func _on_quit_button_pressed():
 func show_game_over():
 	show()
 	get_tree().paused = true
+
+
+func _on_restart_pressed() -> void:
+	get_tree().reload_current_scene() # Replace with function body.
