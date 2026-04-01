@@ -9,20 +9,24 @@ enum State{
 }
 
 @export_category("Stats")
-@export var speed: int = 150
+@export var speed: int = 200
 
 var state: State = State.IDLE
 var move_direction: Vector2 = Vector2.ZERO
 var attack_speed: float = 0.6
 
-
+@onready var water: TileMapLayer = $"../Water"
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var animation_playback: AnimationNodeStateMachinePlayback = $AnimationTree["parameters/playback"]
+@onready var pray: Label = $Pray
+@onready var main: Node2D = $"../.."
+
 
 func _physics_process(delta: float) -> void:
 	if not state== State.ATTACK:
 		movement_loop()
-
+	
+	
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -36,6 +40,18 @@ func movement_loop() -> void:
 	var motion: Vector2 = move_direction.normalized() * speed
 	velocity = motion
 	move_and_slide()
+	
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var body = collision.get_collider()
+		print("Hit:", body.name)
+		if body == water:
+			print("pray")
+			main.set_state(main.GameState.PRAYER)
+			if Input.is_action_just_pressed("enter"):
+				main.set_state(main.GameState.TREE_END)
+		else:
+			main.set_state(main.GameState.PLAY)
 
 	if motion != Vector2.ZERO:
 		# Always in RUN while moving
@@ -76,3 +92,5 @@ func update_animation()->void:
 			animation_playback.travel("running")
 		State.ATTACK:
 			animation_playback.travel("attack")
+			
+	

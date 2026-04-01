@@ -40,8 +40,3 @@ func _physics_process(delta: float) -> void:
 			print("end game")
 			main.set_state(main.GameState.APOLLO_END)
 	
-	
-
-func _on_body_entered(body):
-	if body.name == "Player":
-		main.set_state(main.GameState.APOLLO_END)

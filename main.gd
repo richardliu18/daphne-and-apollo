@@ -4,6 +4,9 @@ extends Node2D
 @onready var tree_end_game: CanvasLayer = $TreeEndGame
 @onready var apollo_end_game: CanvasLayer = $ApolloEndGame
 @onready var map: Node2D = $Map
+@onready var player = $Map/Player
+
+
 
 
 
@@ -11,7 +14,8 @@ enum GameState{
 	START,
 	PLAY,
 	TREE_END,
-	APOLLO_END
+	APOLLO_END,
+	PRAYER,
 }
 
 var gameState = GameState.START
@@ -33,6 +37,7 @@ func update_ui():
 			map.hide()
 			tree_end_game.hide()
 			apollo_end_game.hide()
+			player.pray.hide()
 
 		GameState.PLAY:
 			get_tree().paused = false
@@ -40,6 +45,7 @@ func update_ui():
 			map.show()
 			tree_end_game.hide()
 			apollo_end_game.hide()
+			player.pray.hide()
 
 		GameState.TREE_END:
 			get_tree().paused = true
@@ -47,12 +53,23 @@ func update_ui():
 			map.hide()
 			tree_end_game.show()
 			apollo_end_game.hide()
+			player.pray.hide()
+			
 		GameState.APOLLO_END:
 			get_tree().paused = true
 			start_game.hide()
 			map.hide()
 			tree_end_game.hide()
 			apollo_end_game.show()
+			player.pray.hide()
+			
+		GameState.PRAYER:
+			get_tree().paused = false
+			start_game.hide()
+			map.show()
+			tree_end_game.hide()
+			apollo_end_game.hide()
+			player.pray.show()
 
 func set_state(new_state):
 	gameState = new_state
