@@ -9,7 +9,7 @@ enum State{
 }
 
 @export_category("Stats")
-@export var speed: int = 200
+@export var speed: int = 150
 
 var state: State = State.IDLE
 var move_direction: Vector2 = Vector2.ZERO
@@ -29,8 +29,9 @@ func _physics_process(delta: float) -> void:
 	
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		attack()
+	#if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		#attack()
+	return
 
 func movement_loop() -> void:
 	

@@ -1,0 +1,121 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6bya8kabwghx"]
+
+[ext_resource type="Script" uid="uid://b6w3vsn1cgb30" path="res://scripts/tree_end_game.gd" id="1_n6tlm"]
+[ext_resource type="Texture2D" uid="uid://d08s5b4c0o55i" path="res://free_pixel_16_woods.png" id="2_tsxnn"]
+[ext_resource type="Texture2D" uid="uid://53fa8jgdh28" path="res://apollo.png" id="3_ea1ia"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ebl7i"]
+bg_color = Color(0.87870437, 0.46156484, 0.41184363, 1)
+
+[node name="TreeEndGame" type="CanvasLayer"]
+script = ExtResource("1_n6tlm")
+
+[node name="Panel" type="Panel" parent="."]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 6.1035156e-05
+offset_bottom = 6.1035156e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ebl7i")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -161.0
+offset_right = 700.0
+offset_bottom = 81.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 18
+text = "She said, “Father bring help!  Rivers, if you have divinity,
+destroy my shape by which I’ve pleased too much, by changing it!”
+Having barely finished the prayer, a heavy numbness seizes her limbs,
+her soft breasts are surrounded by thin bark,
+her hair grows into foliage, her arms into branches,
+her foot, just now so swift, clings by sluggish roots,
+her face has the top of a tree, a single splendor remains in her."
+horizontal_alignment = 1
+
+[node name="Restart" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.125
+offset_top = 147.0
+offset_right = 72.125
+offset_bottom = 203.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 21
+text = "RESTART"
+
+[node name="Quit" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.648
+offset_left = -56.0
+offset_top = 213.0
+offset_right = 56.0
+offset_bottom = 167.09601
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 23
+text = "QUIT"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(971.1041, 506.20313)
+scale = Vector2(4.0279937, 3.7834206)
+texture = ExtResource("2_tsxnn")
+region_enabled = true
+region_rect = Rect2(272, 8, 64, 72)
+
+[node name="Apollo" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(193.00012, 513)
+scale = Vector2(7.7560406, 7.7913036)
+texture = ExtResource("3_ea1ia")
+region_enabled = true
+region_rect = Rect2(-8, 192, 64, 64)
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 39.0
+offset_top = 163.0
+offset_right = 485.0
+offset_bottom = 363.0
+theme_override_font_sizes/font_size = 18
+text = "fer, pater,” inquit “opem! sī flūmina nūmen habētis,
+quā nimium placuī, mūtandō perde figūram!”
+vix prece finitā torpor gravis occupat artūs,
+mollia cinguntur tenui praecordia libro,
+in frondem crinēs, in ramos bracchia crescunt,
+pes modo tam velox pigris radicibus haeret,
+ora cacumen habet: remanet nitor unus in illa."
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -414.0
+offset_top = 56.0
+offset_right = 414.0
+offset_bottom = 156.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 39
+text = "You have turned into a tree!"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

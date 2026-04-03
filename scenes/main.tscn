@@ -1,0 +1,18 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctd4la6betihl"]
+
+[ext_resource type="Script" uid="uid://djxcpmgjkccta" path="res://scripts/main.gd" id="1_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://dx8hhrg42jpk8" path="res://scenes/end_game.tscn" id="2_tefeu"]
+[ext_resource type="PackedScene" uid="uid://b7s4tvqgx2ujo" path="res://scenes/map.tscn" id="3_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://b6bya8kabwghx" path="res://scenes/tree_end_game.tscn" id="4_tipki"]
+[ext_resource type="PackedScene" uid="uid://dtcgj7vl68yx7" path="res://scenes/start_game.tscn" id="5_85g3d"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_tbgi4")
+
+[node name="ApolloEndGame" parent="." instance=ExtResource("2_tefeu")]
+
+[node name="Map" parent="." instance=ExtResource("3_o6xl0")]
+
+[node name="TreeEndGame" parent="." instance=ExtResource("4_tipki")]
+
+[node name="StartGame" parent="." instance=ExtResource("5_85g3d")]
