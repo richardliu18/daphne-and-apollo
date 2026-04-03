@@ -21,21 +21,22 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0h6i1")
 
-[node name="Apollo" type="Sprite2D" parent="."]
-position = Vector2(886.99994, 539)
+[node name="Apollo" type="Sprite2D" parent="Panel"]
+position = Vector2(886.99994, 538.99994)
 scale = Vector2(7.7560406, 7.7913036)
 texture = ExtResource("2_0py74")
 region_enabled = true
 region_rect = Rect2(-8, 192, 64, 64)
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -48.0
-offset_top = 189.0
+offset_top = 188.99994
 offset_right = 572.0
-offset_bottom = 366.0
+offset_bottom = 365.99994
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 19
 text = "\"You don’t know, o thoughtless one, you don’t know whom you
@@ -46,50 +47,53 @@ is revealed through me, through me songs harmonize with strings.\"
 "
 horizontal_alignment = 1
 
-[node name="Restart" type="Button" parent="."]
+[node name="Restart" type="Button" parent="Panel"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -95.25
-offset_top = 108.0
+offset_top = 107.99994
 offset_right = 95.25
-offset_bottom = 177.0
+offset_bottom = 176.99994
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 28
 text = "RESTART"
 
-[node name="Quit" type="Button" parent="."]
+[node name="Quit" type="Button" parent="Panel"]
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.897
 offset_left = -68.75
-offset_top = 204.0
+offset_top = 203.99994
 offset_right = 68.75
-offset_bottom = 8.744019
+offset_bottom = 8.7439575
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 26
 text = "QUIT"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1043, 537)
+[node name="Sprite2D" type="Sprite2D" parent="Panel"]
+position = Vector2(1043, 536.99994)
 scale = Vector2(6.4557295, 6.994791)
 texture = ExtResource("3_5pifh")
 region_enabled = true
 region_rect = Rect2(192, 200, 48, 48)
 
-[node name="Label2" type="Label" parent="."]
+[node name="Label2" type="Label" parent="Panel"]
+layout_mode = 0
 offset_left = 12.0
-offset_top = 184.0
+offset_top = 183.99994
 offset_right = 513.0
-offset_bottom = 346.0
+offset_bottom = 345.99994
 theme_override_font_sizes/font_size = 20
 text = "nescis, temeraria, nescis,
 quem fugias, ideoque fugis: mihi Delphica tellus
@@ -98,18 +102,19 @@ Iuppiter est genitor, per me, quod eritque fuitque
 estque, patet, per me concordant carmina nervis."
 horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="."]
+[node name="Label3" type="Label" parent="Panel"]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -189.5
-offset_top = 64.0
+offset_top = 63.99994
 offset_right = 189.5
-offset_bottom = 127.0
+offset_bottom = 126.99994
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 45
 text = "Apollo caught up!"
 horizontal_alignment = 1
 
-[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Panel/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Panel/Quit" to="." method="_on_quit_pressed"]

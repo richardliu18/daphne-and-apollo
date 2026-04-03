@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed: float = 155
+@export var speed: float = 156
 
 @onready var player = get_node("../Player")
 @onready var sprite_2d: Sprite2D = $Sprite2D
@@ -37,9 +37,9 @@ func _physics_process(delta: float) -> void:
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var body = collision.get_collider()
-		print("Hit:", body.name)
+		#print("Hit:", body.name)
 		if body == player:
-			print("end game")
+			#print("end game")
 			main.set_state(main.GameState.APOLLO_END)
 	
 	

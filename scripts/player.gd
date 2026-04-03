@@ -45,9 +45,9 @@ func movement_loop() -> void:
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var body = collision.get_collider()
-		print("Hit:", body.name)
+		#print("Hit:", body.name)
 		if body == water:
-			print("pray")
+			#print("pray")
 			main.set_state(main.GameState.PRAYER)
 			if Input.is_action_just_pressed("enter"):
 				main.set_state(main.GameState.TREE_END)

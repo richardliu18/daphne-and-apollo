@@ -21,16 +21,47 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ebl7i")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label3" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -414.0
+offset_top = 55.99994
+offset_right = 414.0
+offset_bottom = 155.99994
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 39
+text = "You have turned into a tree!"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 162.99994
+offset_right = 485.0
+offset_bottom = 362.99994
+theme_override_font_sizes/font_size = 18
+text = "fer, pater,” inquit “opem! sī flūmina nūmen habētis,
+quā nimium placuī, mūtandō perde figūram!”
+vix prece finitā torpor gravis occupat artūs,
+mollia cinguntur tenui praecordia libro,
+in frondem crinēs, in ramos bracchia crescunt,
+pes modo tam velox pigris radicibus haeret,
+ora cacumen habet: remanet nitor unus in illa."
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -160.0
-offset_top = -161.0
+offset_top = -161.00006
 offset_right = 700.0
-offset_bottom = 81.0
+offset_bottom = 80.99994
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 18
@@ -43,79 +74,53 @@ her foot, just now so swift, clings by sluggish roots,
 her face has the top of a tree, a single splendor remains in her."
 horizontal_alignment = 1
 
-[node name="Restart" type="Button" parent="."]
+[node name="Restart" type="Button" parent="Panel"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -72.125
-offset_top = 147.0
+offset_top = 146.99994
 offset_right = 72.125
-offset_bottom = 203.5
+offset_bottom = 203.49994
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 21
 text = "RESTART"
 
-[node name="Quit" type="Button" parent="."]
+[node name="Quit" type="Button" parent="Panel"]
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.648
 offset_left = -56.0
-offset_top = 213.0
+offset_top = 212.99994
 offset_right = 56.0
-offset_bottom = 167.09601
+offset_bottom = 167.09595
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 23
 text = "QUIT"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="Panel"]
 z_index = 1
-position = Vector2(971.1041, 506.20313)
+position = Vector2(971.1041, 506.20306)
 scale = Vector2(4.0279937, 3.7834206)
 texture = ExtResource("2_tsxnn")
 region_enabled = true
 region_rect = Rect2(272, 8, 64, 72)
 
-[node name="Apollo" type="Sprite2D" parent="."]
+[node name="Apollo" type="Sprite2D" parent="Panel"]
 z_index = 1
-position = Vector2(193.00012, 513)
+position = Vector2(193.00012, 512.99994)
 scale = Vector2(7.7560406, 7.7913036)
 texture = ExtResource("3_ea1ia")
 region_enabled = true
 region_rect = Rect2(-8, 192, 64, 64)
 
-[node name="Label2" type="Label" parent="."]
-offset_left = 39.0
-offset_top = 163.0
-offset_right = 485.0
-offset_bottom = 363.0
-theme_override_font_sizes/font_size = 18
-text = "fer, pater,” inquit “opem! sī flūmina nūmen habētis,
-quā nimium placuī, mūtandō perde figūram!”
-vix prece finitā torpor gravis occupat artūs,
-mollia cinguntur tenui praecordia libro,
-in frondem crinēs, in ramos bracchia crescunt,
-pes modo tam velox pigris radicibus haeret,
-ora cacumen habet: remanet nitor unus in illa."
-horizontal_alignment = 1
-
-[node name="Label3" type="Label" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -414.0
-offset_top = 56.0
-offset_right = 414.0
-offset_bottom = 156.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 39
-text = "You have turned into a tree!"
-horizontal_alignment = 1
-
-[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Panel/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Panel/Quit" to="." method="_on_quit_pressed"]
